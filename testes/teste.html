@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog de Notícias</title>
+<link rel="stylesheet" href="teste.css">
+</head>
+<body>
+
+<header>
+  <h1>Blog de Notícias</h1>
+  <button id="loginBtn">Admin Login</button>
+  <button id="logoutBtn" style="display:none;">Logout</button>
+  <button id="newPostBtn" style="display:none;">Nova Notícia</button>
+</header>
+
+<main>
+  <section id="postsContainer"></section>
+
+  <!-- Modal de criação de post -->
+  <div id="postModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Criar Post</h2>
+      <input type="text" id="postTitle" placeholder="Título">
+      <textarea id="postContent" placeholder="Conteúdo"></textarea>
+      <input type="file" id="postImages" multiple accept="image/*">
+      <button id="savePostBtn">Salvar Post</button>
+    </div>
+  </div>
+</main>
+
+<script src="teste.js"></script>
+</body>
+</html>

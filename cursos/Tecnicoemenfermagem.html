@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Técnico em Enfermagem - CEMP</title>
+    <meta name="description" content="Curso Técnico em Enfermagem da CEMP - Formação completa em cuidados de saúde e assistência ao paciente">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-cemp: #0056b3;
+            --amarelo-cemp: #ffd700;
+            --branco: #ffffff;
+            --azul-escuro: #003366;
+            --cinza-claro: #f5f5f5;
+            --cinza-escuro: #333333;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transicao: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--cinza-escuro);
+            line-height: 1.6;
+            background-color: var(--branco);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--branco);
+            padding: 15px 0;
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            color: var(--azul-cemp);
+            margin: 0;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            color: var(--amarelo-cemp);
+            font-weight: bold;
+        }
+        
+        .logo-text p {
+            color: var(--cinza-escuro);
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--azul-cemp);
+            font-weight: 600;
+            transition: var(--transicao);
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--amarelo-cemp);
+            transition: var(--transicao);
+        }
+        
+        nav ul li a:hover {
+            color: var(--amarelo-cemp);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--amarelo-cemp);
+            color: var(--azul-cemp);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transicao);
+            border: 2px solid var(--amarelo-cemp);
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--amarelo-cemp);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--azul-cemp);
+            cursor: pointer;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            background-color: var(--cinza-claro);
+        }
+        
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breadcrumb-content a {
+            color: var(--azul-cemp);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+        
+        .breadcrumb-content a:hover {
+            color: var(--amarelo-cemp);
+        }
+        
+        .breadcrumb-content span {
+            color: var(--cinza-escuro);
+        }
+        
+        /* Hero do Curso */
+        .course-hero {
+            background: linear-gradient(135deg, var(--azul-cemp) 0%, var(--azul-escuro) 100%);
+            color: var(--branco);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .course-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .course-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Seção de Informações do Curso */
+        .course-info {
+            padding: 60px 0;
+            background-color: var(--branco);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .info-card {
+            background-color: var(--cinza-claro);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--azul-cemp);
+            margin-bottom: 15px;
+        }
+        
+        .info-card h3 {
+            color: var(--azul-cemp);
+            margin-bottom: 10px;
+        }
+        
+        /* Seção Sobre o Curso */
+        .about-course {
+            padding: 60px 0;
+            background-color: var(--cinza-claro);
+        }
+        
+        .about-course-content {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        
+        .course-text {
+            flex: 2;
+        }
+        
+        .course-highlights {
+            flex: 1;
+            background-color: var(--branco);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--sombra);
+        }
+        
+        .highlight-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .highlight-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .highlight-item h4 {
+            color: var(--azul-cemp);
+            margin-bottom: 5px;
+        }
+        
+        /* Seção Grade Curricular */
+        .curriculum {
+            padding: 60px 0;
+            background-color: var(--branco);
+        }
+        
+        .semester {
+            margin-bottom: 40px;
+        }
+        
+        .semester h3 {
+            color: var(--azul-cemp);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--amarelo-cemp);
+            margin-bottom: 20px;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .subject {
+            background-color: var(--cinza-claro);
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transicao);
+        }
+        
+        .subject:hover {
+            background-color: var(--azul-cemp);
+            color: var(--branco);
+        }
+        
+        .subject:hover h4 {
+            color: var(--amarelo-cemp);
+        }
+        
+        .subject h4 {
+            color: var(--azul-cemp);
+            margin-bottom: 10px;
+            transition: var(--transicao);
+        }
+        
+        /* Seção Mercado de Trabalho */
+        .job-market {
+            padding: 60px 0;
+            background-color: var(--cinza-claro);
+        }
+        
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .job-card {
+            background-color: var(--branco);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .job-card h3 {
+            color: var(--azul-cemp);
+            margin-bottom: 15px;
+        }
+        
+        /* Seção Infraestrutura */
+        .infrastructure {
+            padding: 60px 0;
+            background-color: var(--branco);
+        }
+        
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .infra-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+        
+        .infra-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .infra-img {
+            height: 200px;
+            background-color: var(--azul-cemp);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .infra-content {
+            padding: 20px;
+            background-color: var(--branco);
+        }
+        
+        .infra-content h3 {
+            color: var(--azul-cemp);
+            margin-bottom: 10px;
+        }
+        
+        /* Seção Depoimentos */
+        .testimonials {
+            padding: 60px 0;
+            background-color: var(--azul-cemp);
+            color: var(--branco);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            transition: var(--transicao);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--amarelo-cemp);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-cemp);
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin: 0;
+        }
+        
+        .author-info p {
+            margin: 5px 0 0;
+            font-style: normal;
+            font-size: 14px;
+        }
+        
+        /* Seção CTA */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--amarelo-cemp);
+            color: var(--azul-cemp);
+        }
+        
+        .cta h2 {
+            font-size: 2.25rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-inverse {
+            background-color: var(--azul-cemp);
+            color: var(--branco);
+            border-color: var(--azul-cemp);
+        }
+        
+        .btn-inverse:hover {
+            background-color: transparent;
+            color: var(--azul-cemp);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--azul-escuro);
+            color: var(--branco);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--amarelo-cemp);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--amarelo-cemp);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--branco);
+            transition: var(--transicao);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--amarelo-cemp);
+            color: var(--azul-escuro);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--azul-cemp);
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.25rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--amarelo-cemp);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-course-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+            }
+            
+            .btn-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .course-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .course-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .info-grid, .job-grid, .infra-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="imagens/LOGO CEMP.png" alt="CEMP Logo">
+                    <div class="logo-text">
+                        <h1><span>CEMP</span> Escola Técnica </h1>
+                        <p>Educação que transforma vidas</p>
+                    </div>
+                </a>
+                <button class="btn-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="testes/teste.html">Noticias</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a href="SobreNos.html">Sobre Nós</a></li>
+                        <li><a href="https://wa.me/5598981870859?text=Ola gostaria de me inscrever" class="btn">Inscreva-se</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <a href="#">Início</a> <span>></span>
+                <a href="#">Cursos</a> <span>></span>
+                <span>Técnico em Enfermagem</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="course-hero">
+        <div class="container">
+            <h1>Técnico em Enfermagem</h1>
+            <p>Formação completa em cuidados de saúde e assistência ao paciente, preparando você para atuar em hospitais, clínicas e diversas instituições de saúde com competência e humanização.</p>
+            <a href="#" class="btn">Inscreva-se agora</a>
+        </div>
+    </section>
+
+    <section class="course-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-user-nurse"></i>
+                    <h3>Curso Técnico</h3>
+                    <p>Nível médio com habilitação técnica</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Duração</h3>
+                    <p>2 anos (4 módulos)</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-hospital-alt"></i>
+                    <h3>Modalidade</h3>
+                    <p>Presencial</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Mercado de Trabalho</h3>
+                    <p>Alta e constante demanda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-course">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre o Curso</h2>
+            </div>
+            <div class="about-course-content">
+                <div class="course-text">
+                    <p>O curso Técnico em Enfermagem da CEMP oferece uma formação sólida e humanizada, capacitando você para auxiliar no planejamento, programação, orientação e execução de atividades de enfermagem.</p>
+                    <p>Com uma abordagem prática e foco na assistência direta ao paciente, o curso prepara o aluno para atuar com segurança e ética em procedimentos técnicos, como administração de medicamentos, coleta de materiais para exames, curativos e primeiros socorros.</p>
+                    <p>Nossos alunos adquirem conhecimentos essenciais em anatomia, fisiologia, farmacologia e diversas áreas da saúde, além de desenvolverem habilidades interpessoais cruciais para o acolhimento e o cuidado humanizado.</p>
+                    <p>Ao final do curso, você estará qualificado para integrar equipes de saúde e atuar sob a supervisão do enfermeiro, sendo um profissional fundamental no cuidado e na promoção da saúde.</p>
+                    
+                </div>
+                <div class="course-highlights">
+                    <h3>Destaques do Curso</h3>
+                    <div class="highlight-item">
+                        <h4>Aulas Práticas em Laboratório</h4>
+                        <p>Simulação realística de procedimentos e técnicas de enfermagem</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Estágio Supervisionado</h4>
+                        <p>Experiência em hospitais e unidades de saúde parceiras</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Foco na Humanização</h4>
+                        <p>Desenvolvimento de ética e empatia no cuidado ao paciente</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>Corpo Docente Especializado</h4>
+                        <p>Professores enfermeiros com ampla vivência clínica e hospitalar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="curriculum">
+        <div class="container">
+            <div class="section-title">
+                <h2>Grade Curricular</h2>
+            </div>
+            <div class="semester">
+                <h3>Módulo I: Fundamentos da Saúde</h3>
+                <div class="subjects-grid">
+                    <div class="subject"><h4>Anatomia e Fisiologia Humana</h4></div>
+                    <div class="subject"><h4>Microbiologia e Parasitologia</h4></div>
+                    <div class="subject"><h4>Fundamentos de Enfermagem</h4></div>
+                    <div class="subject"><h4>Ética e Legislação em Enfermagem</h4></div>
+                </div>
+            </div>
+            <div class="semester">
+                <h3>Módulo II: Práticas Clínicas e Cirúrgicas</h3>
+                <div class="subjects-grid">
+                    <div class="subject"><h4>Enfermagem Clínica e Cirúrgica</h4></div>
+                    <div class="subject"><h4>Farmacologia Aplicada à Enfermagem</h4></div>
+                    <div class="subject"><h4>Primeiros Socorros</h4></div>
+                    <div class="subject"><h4>Saúde da Mulher e da Criança</h4></div>
+                </div>
+            </div>
+            <div class="semester">
+                <h3>Módulo III: Saúde Coletiva e Especialidades</h3>
+                <div class="subjects-grid">
+                    <div class="subject"><h4>Saúde Coletiva e Epidemiologia</h4></div>
+                    <div class="subject"><h4>Enfermagem em Saúde Mental</h4></div>
+                    <div class="subject"><h4>Enfermagem em Geriatria</h4></div>
+                    <div class="subject"><h4>Técnicas de Urgência e Emergência</h4></div>
+                </div>
+            </div>
+            <div class="semester">
+                <h3>Módulo IV: Estágio e Conclusão</h3>
+                <div class="subjects-grid">
+                    <div class="subject"><h4>Estágio Supervisionado Hospitalar</h4></div>
+                    <div class="subject"><h4>Estágio Supervisionado em Unidades Básicas</h4></div>
+                    <div class="subject"><h4>Gestão em Enfermagem</h4></div>
+                    <div class="subject"><h4>Trabalho de Conclusão de Curso (TCC)</h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="job-market">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mercado de Trabalho</h2>
+            </div>
+            <div class="job-grid">
+                <div class="job-card">
+                    <i class="fas fa-procedures fa-3x"></i>
+                    <h3>Hospitais e Clínicas</h3>
+                    <p>Atendimento e assistência em UTIs, enfermarias, blocos cirúrgicos e pronto-socorros</p>
+                </div>
+                <div class="job-card">
+                    <i class="fas fa-clinic-medical fa-3x"></i>
+                    <h3>Unidades Básicas de Saúde (UBS)</h3>
+                    <p>Ações de promoção e prevenção da saúde na comunidade</p>
+                </div>
+                <div class="job-card">
+                    <i class="fas fa-home fa-3x"></i>
+                    <h3>Home Care e Atendimento Domiciliar</h3>
+                    <p>Cuidados especializados e acompanhamento de pacientes em casa</p>
+                </div>
+                <div class="job-card">
+                    <i class="fas fa-building fa-3x"></i>
+                    <h3>Empresas e Indústrias</h3>
+                    <p>Atuação em enfermagem do trabalho e serviços de saúde ocupacional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="infrastructure">
+        <div class="container">
+            <div class="section-title">
+                <h2>Infraestrutura</h2>
+            </div>
+            <div class="infra-grid">
+                <div class="infra-card">
+                    <div class="infra-img">
+                        Laboratório de Simulação
+                    </div>
+                    <div class="infra-content">
+                        <h3>Laboratório de Simulação Realística</h3>
+                        <p>Salas equipadas com manequins e recursos para simular ambientes hospitalares e de emergência</p>
+                    </div>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-img">
+                        Sala de Práticas
+                    </div>
+                    <div class="infra-content">
+                        <h3>Sala de Práticas de Enfermagem</h3>
+                        <p>Ambientes para o treino de técnicas de punção, curativos, administração de medicamentos e higiene</p>
+                    </div>
+                </div>
+                <div class="infra-card">
+                    <div class="infra-img">
+                        Biblioteca
+                    </div>
+                    <div class="infra-content">
+                        <h3>Acervo Bibliográfico Atualizado</h3>
+                        <p>Livros, periódicos e acesso a bases de dados online na área da saúde e enfermagem</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Alunos e Ex-alunos</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"A formação na CEMP me deu a confiança e a competência para cuidar de vidas. O estágio foi essencial para minha colocação imediata no hospital."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">C</div>
+                        <div class="author-info">
+                            <h4>Cláudia Oliveira</h4>
+                            <p>Técnica de Enfermagem Hospitalar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Os professores são muito dedicados e experientes, e o foco na humanização faz toda a diferença na nossa prática diária com os pacientes."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">P</div>
+                        <div class="author-info">
+                            <h4>Pedro Santos</h4>
+                            <p>Técnico de Enfermagem em UBS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"O laboratório de simulação é incrível! Pude praticar todos os procedimentos com segurança antes de ir para o ambiente real de estágio."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">A</div>
+                        <div class="author-info">
+                            <h4>Ana Rangel</h4>
+                            <p>Aluna do 3º módulo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para iniciar sua carreira na saúde?</h2>
+            <p>Inscreva-se no curso Técnico em Enfermagem e seja um profissional que cuida e transforma.</p>
+            <a href="#" class="btn btn-inverse">Fazer Inscrição</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre a CEMP</h3>
+                    <p>A CEMP é uma escola técnica superior comprometida com a excelência na formação profissional.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="">Início</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="#">Análise e Desenvolvimento de Sistemas</a></li>
+                        <li><a href="#">Técnico em Enfermagem</a></li>
+                        <li><a href="#">Técnico em Eletrotécnica</a></li>
+                        <li><a href="#">Técnico em Mecânica</a></li>
+                        <li><a href="#">Segurança do Trabalho</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Educacional, 1234 - Centro</li>
+                        <li><i class="fas fa-city"></i> Sua Cidade - Estado</li>
+                        <li><i class="fas fa-phone"></i> Telefone: (00) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> Email: contato@cemp.edu.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CEMP Escola Técnica Superior. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+</body>
+</html>

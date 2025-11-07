@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notícias CEMP - Portal de Informação</title>
+<link rel="stylesheet" href="teste.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-container container">
+        <a href="../index.html" class="logo">Portal <span class="cemp-highlight">CEMP</span></a>
+        
+        <div class="admin-controls">
+            <button id="newPostBtn" class="btn btn-primary" style="display:none;">
+                + Nova Notícia
+            </button>
+            <button id="loginBtn" class="btn btn-secondary">Admin Login</button>
+            <button id="logoutBtn" class="btn btn-secondary" style="display:none;">
+                Logout
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="main-content">
+    <div class="container">
+        
+        <section class="page-title-section">
+            <div class="container">
+                <h1>Últimas Notícias</h1>
+                <p>Fique por dentro das novidades, eventos e insights da CEMP Escola Técnica.</p>
+            </div>
+        </section>
+
+        <section id="postsContainer" class="posts-portal-grid"></section>
+        
+        <div id="paginationControls" class="pagination-controls">
+            </div>
+
+    </div>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Publicar Nova Notícia</h2>
+            <input type="text" id="postTitle" placeholder="Título da Notícia">
+            <textarea id="postContent" placeholder="Conteúdo completo da notícia (use Enter para quebrar parágrafos)..."></textarea>
+            <label for="postImages" class="file-label">Adicionar Imagens (Máx. 10, Carrossel)</label>
+            <input type="file" id="postImages" multiple accept="image/*">
+            <button id="savePostBtn" class="btn btn-primary">Publicar</button>
+        </div>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <p>&copy; 2024 CEMP Escola Técnica. Portal de Notícias.</p>
+    </div>
+</footer>
+
+<script src="teste.js"></script>
+</body>
+</html>

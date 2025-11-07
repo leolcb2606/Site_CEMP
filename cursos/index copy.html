@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEMP - Centro de Ensino Profissionalizante</title>
+    <meta name="description" content="Faculdade CEMP - Educação de excelência em cursos técnicos e superiores">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variáveis e Reset */
+        :root {
+            --azul-cemp: #0056b3;
+            --amarelo-cemp: #ffd700;
+            --branco: #ffffff;
+            --azul-escuro: #003366;
+            --cinza-claro: #f5f5f5;
+            --cinza-escuro: #333333;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --sombra-escura: 0 10px 20px rgba(0, 0, 0, 0.15);
+            --transicao: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--cinza-escuro);
+            line-height: 1.6;
+            background-color: var(--branco);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--branco);
+            padding: 10px 0;
+            box-shadow: var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            color: var(--azul-cemp);
+            margin: 0;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--amarelo-cemp);
+            font-weight: bold;
+        }
+
+        .logo-text p {
+            color: var(--cinza-escuro);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--azul-cemp);
+            font-weight: 600;
+            transition: var(--transicao);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--amarelo-cemp);
+            transition: var(--transicao);
+        }
+
+        nav ul li a:hover {
+            color: var(--amarelo-cemp);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--amarelo-cemp);
+            color: var(--azul-cemp);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transicao);
+            border: 2px solid var(--amarelo-cemp);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--amarelo-cemp);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--azul-cemp);
+            cursor: pointer;
+        }
+
+        /* Carrossel Principal (Estilos ausentes no HTML, mas mantidos no CSS) */
+        .main-carousel {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            margin-top: 1px;
+        }
+
+        .main-carousel-slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .main-carousel-slide {
+            width: 33.33%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Seção Cursos - Carrossel */
+        .courses {
+            padding: 60px 0;
+            background-color: var(--branco);
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--azul-escuro);
+            margin-bottom: 5px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--cinza-escuro);
+            margin-bottom: 40px;
+        }
+
+        .courses-carousel {
+            position: relative;
+            overflow: hidden; /* Mantém apenas o que cabe na tela visível */
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .courses-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            
+            /* === CORREÇÃO CRÍTICA APLICADA AQUI === */
+            flex-wrap: nowrap; 
+        }
+
+        .course-card {
+            /* 300px de largura do card */
+            flex: 0 0 300px; 
+            /* 15px de margem de cada lado. O JS calcula 300 + 15 + 15 = 330px por passo. */
+            margin: 0 15px; 
+            background-color: var(--branco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicao);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-escura);
+        }
+
+        .course-img {
+            height: 200px;
+            background-color: var(--azul-cemp);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-content h3 {
+            color: var(--azul-cemp);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .course-content p {
+            margin-bottom: 20px;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background-color: var(--azul-cemp);
+            color: var(--branco);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--amarelo-cemp);
+            color: var(--azul-cemp);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--azul-escuro);
+            color: var(--branco);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--amarelo-cemp);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--amarelo-cemp);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--branco);
+            transition: var(--transicao);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--amarelo-cemp);
+            color: var(--azul-escuro);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+
+        /* Responsividade (Importante para o menu mobile) */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Menu Mobile */
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                background-color: var(--branco);
+                box-shadow: var(--sombra);
+                padding: 10px 0;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            .btn-menu {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="imagens/LOGO CEMP.png" alt="CEMP Logo">
+                    <div class="logo-text">
+                        <h1><span>CEMP</span> MA</h1>
+                        <p>Uma escola de resultados</p>
+                    </div>
+                </a>
+                <button class="btn-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#TipoCurso">Cursos</a></li>
+                        <li><a href="../testes copy/teste.html">Noticias</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a href="SobreNos.html">Sobre Nós</a></li>
+                        <li><a href="https://wa.me/5598981870859?text=Ola gostaria de me inscrever" class="btn">Inscreva-se</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    
+    <section class="courses">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Nossos Cursos</h2>
+                <p>Conheça nossa grade de cursos</p>
+            </div>
+            
+            <div class="courses-carousel">
+                <div class="courses-track">
+                    <div class="course-card">
+                        <div class="course-img" style="background-color: #003366;">
+                            Eletromecânica
+                        </div>
+                        <div class="course-content">
+                            <h3>Técnico em Eletromecânica</h3>
+                            <p>Capacitação completa em sistemas elétricos e mecânicos, preparando você para atuar em manutenção, instalação e automação industrial.</p>
+                            <a href="TécnicoEletromag.html" class="btn">Saiba mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-img" style="background-color: #004080;">
+                            Enfermagem
+                        </div>
+                        <div class="course-content">
+                            <h3>Técnico em Enfermagem</h3>
+                            <p>Formação humanizada e técnica para atuar na área da saúde com excelência.</p>
+                            <a href="Tecnicoemenfermagem.html" class="btn">Saiba mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-img" style="background-color: #0055a5;">
+                           Eletrotécnica
+                        </div>
+                        <div class="course-content">
+                            <h3>Técnico em Eletrotécnica</h3>
+                            <p>Aprenda a gerir negócios e processos administrativos com eficiência.</p>
+                            <a href="#" class="btn">Saiba mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-img" style="background-color: #0066cc;">
+                            Mecânica
+                        </div>
+                        <div class="course-content">
+                            <h3>Técnico em Mecânica</h3>
+                            <p>Formação completa para projetar, montar e manter máquinas e equipamentos, garantindo eficiência e inovação no setor industrial.</p>
+                            <a href="#" class="btn">Saiba mais</a>
+                        </div>
+                    </div>
+                    
+                    <div class="course-card">
+                        <div class="course-img" style="background-color: #0077e6;">
+                              Edificações
+                        </div>
+                        <div class="course-content">
+                            <h3>Técnico Edificações</h3>
+                            <p>Capacitação completa para atuar no planejamento, execução e fiscalização de obras civis, garantindo qualidade e segurança em cada projeto.</p>
+                            <a href="#" class="btn">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre a CEMP</h3>
+                    <p>A CEMP é uma escola técnica superior comprometida com a excelência na formação profissional.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="PaginaCurso.html">Cursos</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="TecnicoEletromag.html">Técnico em Eletromecânica</a></li>
+                        <li><a href="Tecnicoemenfermagem.html">Técnico em Enfermagem</a></li>
+                        <li><a href="#">Técnico em Eletrotécnica</a></li>
+                        <li><a href="#">Técnico em Mecânica</a></li>
+                        <li><a href="#">Segurança Edificações</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Educacional, 1234 - Centro</li>
+                        <li><i class="fas fa-city"></i> Sua Cidade - Estado</li>
+                        <li><i class="fas fa-phone"></i> Telefone: (00) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> Email: contato@cemp.edu.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CEMP Escola Técnica Superior. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para o carrossel principal (Se você tiver a seção .main-carousel no seu HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carrossel principal (A seção não está no HTML, mas o código está aqui)
+            const mainSlides = document.querySelector('.main-carousel-slides');
+            const mainDots = document.querySelectorAll('.main-carousel-dot');
+            let currentMainSlide = 0;
+            const mainSlideCount = document.querySelectorAll('.main-carousel-slide').length;
+            
+            if (mainSlides) { // Proteção caso a seção não exista no HTML
+                function goToMainSlide(n) {
+                    currentMainSlide = (n + mainSlideCount) % mainSlideCount;
+                    // Note: 33.33% assume 3 slides. Se mudar, ajuste o valor.
+                    mainSlides.style.transform = `translateX(-${currentMainSlide * 33.33}%)`;
+                    
+                    mainDots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentMainSlide);
+                    });
+                }
+                
+                mainDots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        goToMainSlide(index);
+                    });
+                });
+                
+                let mainSlideInterval = setInterval(() => {
+                    goToMainSlide(currentMainSlide + 1);
+                }, 5000);
+                
+                const mainCarousel = document.querySelector('.main-carousel');
+                mainCarousel.addEventListener('mouseenter', () => {
+                    clearInterval(mainSlideInterval);
+                });
+                
+                mainCarousel.addEventListener('mouseleave', () => {
+                    mainSlideInterval = setInterval(() => {
+                        goToMainSlide(currentMainSlide + 1);
+                    }, 5000);
+                });
+            }
+
+            // Carrossel de cursos
+            const track = document.querySelector('.courses-track');
+            const courseCards = document.querySelectorAll('.course-card');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+
+            // **IMPORTANTE**: Verifica se os elementos do carrossel de cursos existem.
+            if (courseCards.length > 0 && track && prevBtn && nextBtn) {
+                // Calcular a largura total de um card (incluindo margens)
+                const cardStyle = getComputedStyle(courseCards[0]);
+                const cardWidth = courseCards[0].offsetWidth + 
+                                 parseInt(cardStyle.marginLeft) + 
+                                 parseInt(cardStyle.marginRight);
+                
+                // Calcula quantos cards cabem no viewport visível para saber o limite de rolagem
+                const trackWidth = track.parentElement.offsetWidth;
+                const visibleCardsCount = Math.floor(trackWidth / cardWidth);
+                const maxIndex = courseCards.length - visibleCardsCount;
+                
+                function moveCarousel() {
+                    // Limita o índice para não rolar demais
+                    if (currentIndex < 0) {
+                        currentIndex = 0;
+                    } else if (currentIndex > maxIndex) {
+                        currentIndex = maxIndex;
+                    }
+                    
+                    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < maxIndex) {
+                        currentIndex++;
+                        moveCarousel();
+                    }
+                });
+                
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        moveCarousel();
+                    }
+                });
+            }
+            
+            // Menu mobile
+            const btnMenu = document.querySelector('.btn-menu');
+            const nav = document.querySelector('nav');
+            
+            btnMenu.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+            
+            
+            // pop up
+            // Exibir popup após 2 segundos (A DIV do pop-up deve ser adicionada ao HTML)
+            const popup = document.getElementById("promoPopup");
+            
+            if (popup) { // Verifica se o elemento pop-up existe no HTML
+                window.addEventListener("load", () => {
+                    setTimeout(() => {
+                        popup.style.display = "flex";
+                        popup.classList.add("show");
+                    }, 2000);
+                });
+
+                // Fechar popup
+                document.querySelector(".popup-close").addEventListener("click", () => {
+                    popup.style.display = "none";
+                });
+
+                // Abrir WhatsApp
+                function openWhatsApp(){
+                    const phone = "5511999999999"; // substitua pelo número desejado
+                    const message = "Olá! Tenho interesse na promoção.";
+                    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+                    window.open(url, "_blank");
+                }
+            }
+
+
+            // teste carrossel (O carrossel de imagens com a classe .carousel-img deve ser adicionado ao HTML)
+            const images = document.querySelectorAll('.carousel-img');
+            let current = 0;
+
+            if (images.length > 0) {
+                function nextImage() {
+                    images[current].classList.remove('active');
+                    current = (current + 1) % images.length;
+                    images[current].classList.add('active');
+                }
+
+                // Troca a imagem a cada 3 segundos
+                setInterval(nextImage, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

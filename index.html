@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEMP - Centro de Ensino Profissionalizante</title>
+    <meta name="description" content="Faculdade CEMP - Educação de excelência em cursos técnicos e superiores">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Banner Popup -->
+<div id="promoPopup" class="popup">
+  <span class="popup-close">&times;</span>
+  <img src="imagens/Design sem nome.png" alt="Promoção" class="popup-image">
+  <button class="popup-whatsapp" onclick="openWhatsApp()">Clique aqui</button>
+</div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="imagens/LOGO CEMP.png" alt="CEMP Logo">
+                    <div class="logo-text">
+                        <h1><span>CEMP</span> MA</h1>
+                        <p>Uma escola de resultados</p>
+                    </div>
+                </a>
+                <button class="btn-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#TipoCurso">Cursos</a></li>
+                        <li><a href="testes/teste.html">Noticias</a></li>
+                        <li><a href="unidades.html">Unidades</a></li>
+                        <li><a href="SobreNos.html">Sobre Nós</a></li>
+                        <li><a href="https://wa.me/5598981870859?text=Ola gostaria de me inscrever" class="btn">Inscreva-se</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Carrossel Principal -->
+    <div class="main-carousel" id="home">
+        <div class="main-carousel-slides">
+            <div class="main-carousel-slide">
+                <img src="imagens/img1.JPG" >
+                <div class="main-slide-content">
+                    <h2>Educação de Qualidade</h2>
+                    <p>Preparamos profissionais para o mercado de trabalho com excelência acadêmica</p>
+                </div>
+            </div>
+            <div class="main-carousel-slide">
+                <img src="imagens/img2.JPG" >
+                <div class="main-slide-content">
+                    <h2>Infraestrutura Moderna</h2>
+                    <p>Laboratórios equipados e salas de aula com tecnologia de ponta</p>
+                </div>
+            </div>
+
+                        <div class="main-carousel-slide">
+                <img src="imagens/img3.JPG" >
+                <div class="main-slide-content">
+                    <h2>Infraestrutura Moderna</h2>
+                    <p>O futuro se aprende aqui</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="main-carousel-nav">
+            <div class="main-carousel-dot active" data-slide="0"></div>
+            <div class="main-carousel-dot" data-slide="1"></div>
+            <div class="main-carousel-dot" data-slide="2"></div>
+        </div>
+    </div>
+
+
+    <section class="hero" >
+        <div class="container">
+            <h2>Transforme seu futuro com a CEMP</h2>
+            <p>Educação técnica de excelência para formar os profissionais que o mercado precisa. Cursos modernos com professores experientes e infraestrutura de ponta.</p>
+            <a href="#TipoCurso" class="btn">Conheça nossos cursos</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre a CEMP</h2>
+                    <p>A CEMP Escola Técnica Superior é referência em educação profissional há mais de 15 anos. Nossa missão é formar profissionais competentes e éticos, preparados para os desafios do mercado de trabalho.</p>
+                    <p>Com infraestrutura moderna, laboratórios equipados e corpo docente qualificado, oferecemos a melhor experiência de aprendizagem para nossos alunos.</p>
+                    <a href="#" class="btn">Nossa história</a>
+                </div>
+                <div class="about-img carousel">
+                     <img src="imagens/img1.JPG" class="carousel-img active" alt="">
+                     <img src="imagens/img2.JPG" class="carousel-img" alt="">
+                     <img src="imagens/img3.JPG" class="carousel-img" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tipos-cursos" id="TipoCurso">
+    <h1>Nossos Cursos</h1>
+    <div class="cards-container">
+
+        <a href="cursos/index copy.html" class="card">
+            <h2>Curso Técnico</h2>
+            <p>Formação completa com certificado reconhecido.</p>
+        </a>
+
+        <a href="cursos-ead.html" class="card">
+            <h2>Curso EAD</h2>
+            <p>Estude de onde estiver com flexibilidade.</p>
+        </a>
+
+        <a href="cursos-rapidos.html" class="card">
+            <h2>Curso Rápido</h2>
+            <p>Capacitação objetiva e rápida para o mercado.</p>
+        </a>
+
+    </div>
+</section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Carreta do conhecimento</h2>
+                    <p>A Carreta do Conhecimento chegou para levar aprendizado e oportunidades até você, oferecendo cursos e capacitação prática onde você estiver.</p>
+                    <p>Transforme seu futuro com a Carreta do Conhecimento: educação de qualidade, de forma acessível e próxima da sua comunidade.</p>
+                    <a href="#https://wa.me/5598981870859?text=Ola gostaria de saber mais!" class="btn">Saiba Mais</a>
+                </div>
+                <div class="about-img">
+                    <img src="imagens/carreta.jpeg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que dizem nossos alunos</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"A CEMP me proporcionou não apenas conhecimento técnico, mas também a confiança necessária para ingressar no mercado de trabalho. Hoje trabalho em uma grande empresa graças à formação que recebi."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">J</div>
+                        <div class="author-info">
+                            <h4>Joana Silva</h4>
+                            <p>Ex-aluna de Enfermagem</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Os professores são excelentes e a estrutura da escola é incrível. O curso de ADS me preparou muito bem e consegui meu primeiro emprego antes mesmo de me formar."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">M</div>
+                        <div class="author-info">
+                            <h4>Marcos Oliveira</h4>
+                            <p>Ex-aluno de ADS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Escolhi a CEMP pela reputação e não me arrependi. O curso de Administração superou minhas expectativas e me abriu portas no mercado financeiro."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">A</div>
+                        <div class="author-info">
+                            <h4>Ana Costa</h4>
+                            <p>Ex-aluna de Administração</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para transformar seu futuro?</h2>
+            <p>Inscreva-se agora e dê o primeiro passo para uma carreira de sucesso com a CEMP Escola Técnica Superior.</p>
+            <a href="https://wa.me/5598981870859?text=Ola gostaria de me inscrever" class="btn btn-inverse">Inscreva-se agora</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre a CEMP</h3>
+                    <p>A CEMP é uma escola técnica superior comprometida com a excelência na formação profissional.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="PaginaCurso.html">Cursos</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul>
+                        <li><a href="cursos/TécnicoEletromag.html">Técnico em Eletromecânica</a></li>
+                        <li><a href="cursos/Técnicoemenfermagem.html">Técnico em Enfermagem</a></li>
+                        <li><a href="#">Técnico em Eletrotécnica</a></li>
+                        <li><a href="#">Técnico em Mecânica</a></li>
+                        <li><a href="#">Segurança Edificações</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Educacional, 1234 - Centro</li>
+                        <li><i class="fas fa-city"></i> Sua Cidade - Estado</li>
+                        <li><i class="fas fa-phone"></i> Telefone: (00) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> Email: contato@cemp.edu.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CEMP Escola Técnica Superior. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
